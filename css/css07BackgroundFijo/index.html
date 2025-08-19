@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Div con Imagen de Fondo y Scroll</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .contenedor-con-fondo {
+        width: 60%;
+        height: 500px;
+        margin-left: 10px;
+        margin-top: 20px;
+        background-image: url("background.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 3px solid #cc0000;
+      }
+
+      .contenido-scrolleable {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: rgba(
+          240,
+          240,
+          240,
+          0.3
+        ); /*opacidad para no tapar el fondo*/
+      }
+
+      .contenido-scrolleable h2 {
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .contenido-scrolleable p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: #444;
+      }
+
+      .contenedor-del {
+        background-color: rgb(28, 21, 55);
+        padding: 30px;
+        margin: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contenedor-del">
+      <div class="contenedor-con-fondo">
+        <div class="contenido-scrolleable">
+          <h2>
+            El padding es importante para que el texto no quede pegado al borde
+          </h2>
+
+          <p>
+            No olvidar usar el box-sizing: border para que la dimensión de la
+            caja sea exactamente la definida en el width
+          </p>
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim
+            obcaecati magnam sed perspiciatis molestias cumque, sapiente earum
+            neque beatae autem modi recusandae, qui animi. Tenetur voluptatem
+            nesciunt reiciendis deserunt exercitationem. Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Laboriosam sint aut consectetur,
+            necessitatibus, reiciendis maxime repellendus impedit voluptates
+            ipsum obcaecati voluptatem perspiciatis praesentium sunt illum. A
+            quos fuga expedita voluptas.lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Laboriosam sint aut consectetur, necessitatibus,
+            reiciendis maxime repellendus impedit voluptates ipsum obcaecati
+            voluptatem perspiciatis praesentium sunt illum. A quos fuga expedita
+            voluptas.
+          </p>
+
+          <p>
+            Este contenido continúa más allá de la altura del div, por lo que
+            será necesario hacer scroll para ver todo el contenido.
+          </p>
+
+          <p>
+            Puedes agregar más contenido aquí y el scroll funcionará
+            automáticamente.
+          </p>
+
+          <p>
+            La imagen de fondo permanece fija mientras el contenido se desplaza.
+          </p>
+
+          <p>Final del contenido scrolleable.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
