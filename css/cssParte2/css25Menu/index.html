@@ -1,13 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>css25Menu</title>
-</head>
-<body>
-  <h1>css25Menu</h1>
-  <p>Contenido de ejemplo para css25Menu.</p>
-  <p><a href="../index.html">Volver a CSS - Parte 2</a></p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Desplegable</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .menu-container {
+        background-color: #4a6fa5;
+        padding: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .menu-container > ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        position: relative;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 15px 25px;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      li a:hover {
+        background-color: #5a7fb5;
+      }
+
+      .submenu {
+        display: block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #4a6fa5;
+        min-width: 200px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      li:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .submenu li a:hover {
+        background-color: #5a7fb5;
+        padding-left: 25px;
+      }
+
+      .content {
+        padding: 40px;
+        text-align: center;
+      }
+
+      .content p {
+        color: #666;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="menu-container">
+      <ul>
+        <li class="has-submenu">
+          <a href="../../../html/index.html">HTML</a>
+          <ul class="submenu">
+            <li>
+              <a href="../../../html/ejercicio1/index.html">Ejercicio 1</a>
+            </li>
+            <li>
+              <a href="../../../html/ejercicio2/index.html">Ejercicio 2</a>
+            </li>
+            <li>
+              <a href="../../../html/ejercicio3/index.html">Ejercicio 3</a>
+            </li>
+            <li>
+              <a href="../../../html/ejercicio3/respuesta_formulario.html"
+                >Respuesta formulario (ej3)</a
+              >
+            </li>
+            <li><a href="../../../html/ejercicio4/index.html">Iframes</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a href="../../index.html">CSS</a>
+          <ul class="submenu">
+            <li><a href="../../cssParte1/index.html">Parte 1</a></li>
+            <li><a href="../../cssParte2/index.html">Parte 2</a></li>
+            <li>
+              <a href="../../cssParte2/css25Menu/index.html"
+                >Ejemplo: Menú (actual)</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a href="../../../javascript/index.html">JAVASCRIPT</a>
+        </li>
+
+        <li class="has-submenu">
+          <a href="../../../especiales/index.html">ESPECIALES</a>
+        </li>
+
+        <li class="has-submenu">
+          <a href="../../../php/index.html">PHP</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content">
+      <p>Ejercicio sobre menus</p>
+      <buton>
+        <a href="../../index.html">Volver a CSS</a>
+      </buton>
+    </div>
+  </body>
 </html>

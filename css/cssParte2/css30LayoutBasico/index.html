@@ -1,13 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>css30LayoutBasico</title>
-</head>
-<body>
-  <h1>css30LayoutBasico</h1>
-  <p>Contenido de ejemplo para css30LayoutBasico.</p>
-  <p><a href="../index.html">Volver a CSS - Parte 2</a></p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de Página Web</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        background-color: #808080;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        height: 68px;
+      }
+
+      .main-content {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .sidebar {
+        background-color: #fd8ffd;
+        padding: 20px;
+        width: 200px;
+        overflow-y: auto;
+      }
+
+      .sidebar h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        background-color: #070707;
+        padding: 10px;
+        display: block;
+        color: rgb(253, 252, 252);
+        text-align: center;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #b0bec5;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+        background-color: #f5f5f5;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .content iframe {
+        flex: 1;
+        width: 100%;
+        border: none;
+        background: white;
+      }
+
+      footer {
+        background-color: #808080;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        height: 68px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Titulos principal de página 1</h1>
+    </header>
+    <div class="main-content">
+      <nav class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+          <li>
+            <a href="../../../html/index.html" target="contenido">HTML</a>
+          </li>
+          <li><a href="../../index.html" target="contenido">CSS</a></li>
+          <li>
+            <a href="../../../javascript/index.html" target="contenido"
+              >JSCRIPT</a
+            >
+          </li>
+          <li><a href="../../../php/index.html" target="contenido">PHP</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <h2>Bienvenido</h2>
+        <p>Selecciona una sección del menú para ver su contenido.</p>
+        <iframe name="contenido" title="Contenido de la sección"></iframe>
+      </div>
+    </div>
+
+    <footer>
+      <p>Pie de página</p>
+      <a href="../">Volver atras</a>
+    </footer>
+  </body>
 </html>

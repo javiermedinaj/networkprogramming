@@ -1,13 +1,270 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>css29TablasRWD</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Productos</title>
+    <style>
+        :root{
+            --bg: #161717;
+            --card: #3b06ce;
+            --accent: #3771c1;
+            --muted: #cfe8ef;
+            --text: #ffffff;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        *{
+            box-sizing:border-box
+        }
+        body{
+            font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+            background:var(--bg);
+            color:var(--muted);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .site-bar{
+            height:60px;
+            display:flex;
+            align-items:center;
+            padding:0 20px;
+            background:var(--card);
+            color:var(--text);
+            border:none;
+            box-shadow:none;
+        }
+        header.site-bar{
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        footer.site-bar{
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        header h1{
+            font-size:18px;
+            margin:0
+        }
+        main{
+            flex: 1;
+            padding:18px;
+            overflow: auto;
+            position: relative;
+            /* height: calc(100vh - 120px); 60px header + 60px footer */
+        }        
+        .table-card{
+            background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.03));
+            border-radius:8px;
+            padding:12px;
+            height: 100%;
+        }
+        .table-wrapper{
+            height: 100%;
+            overflow: auto;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            min-width:900px
+        }
+        thead th
+        {position:sticky;
+            top:0;background:var(--card);
+            color:var(--text);
+            padding:10px;
+            text-align:left;
+            border-bottom:2px solid rgba(255,255,255,0.06)
+        }
+        tbody td{
+            padding:10px;
+            border-bottom:1px solid rgba(255,255,255,0.03);
+            color:var(--muted)
+        }
+        /* tbody tr:nth-child(even){background:rgba(255,255,255,0.01)} */
+
+        a.img-link{color:var(--accent);word-break:break-all;text-decoration:underline}
+
+        @media (max-width:700px){
+            table{min-width:720px}
+            .table-wrapper{overflow-x:auto}
+        }
+    </style>
 </head>
 <body>
-  <h1>css29TablasRWD</h1>
-  <p>Contenido de ejemplo para css29TablasRWD.</p>
-  <p><a href="../index.html">Volver a CSS - Parte 2</a></p>
+    <header class="site-bar">
+        <h1>Productos — Dashboard</h1>
+    </header>
+    <main>
+        <div class="table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Link Imagen</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Zapatos Runner</td>
+                            <td>Calzado</td>
+                            <td>$79.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/001" target="_blank">https://googledrive.com/ejemplo/001</a></td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Camiseta Sport</td>
+                            <td>Ropa</td>
+                            <td>$24.50</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/002" target="_blank">https://googledrive.com/ejemplo/002</a></td>
+                            <td>120</td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Pantalón Denim</td>
+                            <td>Ropa</td>
+                            <td>$49.00</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/003" target="_blank">https://googledrive.com/ejemplo/003</a></td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>AppleWatch</td><td>Accesorios</td><td>$149.00</td><td><a class="img-link" href="https://googledrive.com/ejemplo/004" target="_blank">https://googledrive.com/ejemplo/004</a></td><td>10</td></tr>
+                        <tr>
+                            <td>005</td>
+                            <td>Mochila Trek</td>
+                            <td>Equipamiento</td>
+                            <td>$89.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/005" target="_blank">https://googledrive.com/ejemplo/005</a></td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>006</td>
+                            <td>Gorra Trasher</td>
+                            <td>Accesorios</td>
+                            <td>$19.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/006" target="_blank">https://googledrive.com/ejemplo/006</a></td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>007</td>
+                            <td>Medias</td>
+                            <td>Calzado</td>
+                            <td>$9.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/007" target="_blank">https://googledrive.com/ejemplo/007</a></td>
+                            <td>300</td>
+                        </tr>
+                        <tr>
+                            <td>008</td>
+                            <td>Campera Wind</td>
+                            <td>Ropa</td>
+                            <td>$119.00</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/008" target="_blank">https://googledrive.com/ejemplo/008</a></td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>009</td>
+                            <td>Botella Steel</td>
+                            <td>Accesorios</td>
+                            <td>$14.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/009" target="_blank">https://googledrive.com/ejemplo/009</a></td>
+                            <td>150</td>
+                        </tr>
+                        <tr>
+                            <td>010</td>
+                            <td>Shorts Run</td><td>Ropa</td><td>$29.99</td><td><a class="img-link" href="https://googledrive.com/ejemplo/010" target="_blank">https://googledrive.com/ejemplo/010</a></td><td>75</td></tr>
+                        <tr>
+                            <td>011</td>
+                            <td>Auriculares Bass</td>
+                            <td>Electronica</td>
+                            <td>$59.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/011" target="_blank">https://googledrive.com/ejemplo/011</a></td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>012</td>
+                            <td>Linterna LED</td><td>Equipamiento</td><td>$12.99</td><td><a class="img-link" href="https://googledrive.com/ejemplo/012" target="_blank">https://googledrive.com/ejemplo/012</a></td><td>89</td></tr>
+                        <tr>
+                            <td>013</td>
+                            <td>Cinturón Urban</td>
+                            <td>Accesorios</td>
+                            <td>$22.00</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/013" target="_blank">https://googledrive.com/ejemplo/013</a></td>
+                            <td>56</td>
+                        </tr>
+                        <tr>
+                            <td>014</td>
+                            <td>Bolso City</td><td>Ropa</td><td>$69.00</td><td><a class="img-link" href="https://googledrive.com/ejemplo/014" target="_blank">https://googledrive.com/ejemplo/014</a></td><td>22</td></tr>
+                        <tr>
+                            <td>015</td>
+                            <td>Equipo Yoga</td>
+                            <td>Deportes</td>
+                            <td>$39.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/015" target="_blank">https://googledrive.com/ejemplo/015</a></td>
+                            <td>140</td>
+                        </tr>
+                        <tr>
+                            <td>016</td>
+                            <td>Guantes Grip</td>
+                            <td>Deportes</td>
+                            <td>$17.50</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/016" target="_blank">https://googledrive.com/ejemplo/016</a></td>
+                            <td>92</td>
+                        </tr>
+                        <tr>
+                            <td>017</td>
+                            <td>Smartband Fit</td>
+                            <td>Electronica</td>
+                            <td>$99.00</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/017" target="_blank">https://googledrive.com/ejemplo/017</a></td>
+                            <td>27</td>
+                        </tr>
+                        <tr>
+                            <td>018</td>
+                            <td>Mouse Wireless</td>
+                            <td>Electronica</td>
+                            <td>$25.00</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/018" target="_blank">https://googledrive.com/ejemplo/018</a></td>
+                            <td>67</td>
+                        </tr>
+                        <tr>
+                            <td>019</td>
+                            <td>Teclado Compact</td>
+                            <td>Electronica</td>
+                            <td>$45.00</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/019" target="_blank">https://googledrive.com/ejemplo/019</a></td>
+                            <td>41</td>
+                        </tr>
+                        <tr>
+                            <td>020</td>
+                            <td>Colchoneta Gym</td>
+                            <td>Deportes</td>
+                            <td>$34.99</td>
+                            <td><a class="img-link" href="https://googledrive.com/ejemplo/020" target="_blank">https://googledrive.com/ejemplo/020</a></td>
+                            <td>73</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer class="site-bar">
+        <div>
+            <a href="../">volver</a>
+        </div>
+    </footer>
 </body>
 </html>

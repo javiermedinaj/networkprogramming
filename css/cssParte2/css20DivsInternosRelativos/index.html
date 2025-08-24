@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>css20DivsInternosRelativos</title>
+    <meta charset="UTF-8">
+    <title>Contenedores Relativos</title>
+    <style>
+        body {
+            background-color: blue;
+        }
+        .contenedor-principal {
+            background-color: rgb(227, 217, 202);  
+            position: absolute;  
+        }
+        .contenedor-relativo1 {
+          background-color: green;
+
+        }
+        .contenedor-relativo2 {
+          background-color: yellow;
+          width: 50%;
+          height: 30px;
+          margin-left: 40px;
+        }
+
+    </style>
 </head>
 <body>
-  <h1>css20DivsInternosRelativos</h1>
-  <p>Contenido de ejemplo para css20DivsInternosRelativos.</p>
-  <p><a href="../index.html">Volver a CSS - Parte 2</a></p>
+    <div class="contenedor-principal">
+        <div class="contenedor-relativo1">contenedor-relativo1</div>
+        <div class="contenedor-relativo1">contenedor-relativo1</div>
+        <div class="contenedor-relativo2">contenedor-relativo2</div>
+        <div class="contenedor-relativo3">contenedor-relativo3
+          texto texto texto texto
+          texto texto texto texto
+          texto texto texto texto
+          texto texto texto texto
+        </div>
+        <div class="contenedor-modal">Contenedor modal</div>
+    </div>
 </body>
 </html>
