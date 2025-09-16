@@ -7,15 +7,25 @@
 <body>
   <h2>_comando_en_evento.html</h2>
 
-  <button onclick="alert('Mensaje de alert')">
+  <button id="alertBtn">
     Click aquí para ejecutar un alert
   </button>
 
-  <button onclick="document.write('<h3>Texto escrito con document.write() desde un evento, esto sobrepisa el html anterior</h3>')">
+  <button id="writeBtn">
     Click aquí para ejecutar un document.write()
   </button>
   <div style="margin-top: 20px;">
         <button><a href="./">Volver atras</a></button>
     </div>
+
+  <script>
+    document.getElementById('alertBtn').addEventListener('click', function() {
+      alert('Mensaje de alert');
+    });
+
+    document.getElementById('writeBtn').addEventListener('click', function() {
+      document.write('<h3>Texto escrito con document.write() desde un evento, esto sobrepisa el html anterior</h3>');
+    });
+  </script>
 </body>
 </html>
