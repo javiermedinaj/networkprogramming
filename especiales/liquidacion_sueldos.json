@@ -1,0 +1,70 @@
+{
+    "liquidaciones_sueldos": [
+        {
+            "legajo_empleado": "EMP001",
+            "apellido_y_nombres": "Messi, Leonel",
+            "fecha_liquidacion": "2025-01-31",
+            "mes_de_liquidacion": "2025-01",
+            "sueldo_basico": 850000.00,
+            "concepto_no_remunerativo_1": {
+                "codigo_concepto": "02",
+                "descripcion": "Asignaciones familiares"
+            },
+            "monto_no_remunerativo_1": 125000.00
+        },
+        {
+            "legajo_empleado": "EMP002",
+            "apellido_y_nombres": "Colidio, Facundo",
+            "fecha_liquidacion": "2025-01-31",
+            "mes_de_liquidacion": "2025-01",
+            "sueldo_basico": 950000.00,
+            "concepto_no_remunerativo_1": {
+                "codigo_concepto": "04",
+                "descripcion": "Adicional por presentismo"
+            },
+            "monto_no_remunerativo_1": 50000.00
+        },
+        {
+            "legajo_empleado": "EMP003",
+            "apellido_y_nombres": "Quintero, Juanfer",
+            "fecha_liquidacion": "2025-01-31",
+            "mes_de_liquidacion": "2025-01",
+            "sueldo_basico": 750000.00,
+            "concepto_no_remunerativo_1": {
+                "codigo_concepto": "03",
+                "descripcion": "Viaticos"
+            },
+            "monto_no_remunerativo_1": 80000.00
+        },
+        {
+            "legajo_empleado": "EMP004",
+            "apellido_y_nombres": "Gallardo, Marcelo",
+            "fecha_liquidacion": "2025-01-31",
+            "mes_de_liquidacion": "2025-01",
+            "sueldo_basico": 12000000.00,
+            "concepto_no_remunerativo_1": {
+                "codigo_concepto": "01",
+                "descripcion": "Indemnizaciones"
+            },
+            "monto_no_remunerativo_1": 3000000.00
+        }
+    ],
+    "codigos_conceptos_disponibles": [
+        {
+            "codigo": "01",
+            "descripcion": "Indemnizaciones"
+        },
+        {
+            "codigo": "02",
+            "descripcion": "Asignaciones familiares"
+        },
+        {
+            "codigo": "03",
+            "descripcion": "Viaticos"
+        },
+        {
+            "codigo": "04",
+            "descripcion": "Adicional por presentismo"
+        }
+    ]
+}
