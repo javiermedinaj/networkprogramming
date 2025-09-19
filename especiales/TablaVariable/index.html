@@ -7,23 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <span class="header-title">Sistema de Depósitos</span>
-            <div class="header-controls">
-                <button class="btn btn-mostrar" onclick="mostrarDepositos()">
-                    MOSTRAR DEPÓSITOS
-                </button>
-                <button class="btn btn-ocultar" onclick="ocultarDepositos()">
-                    OCULTAR DEPÓSITOS
-                </button>
-            </div>
+    <header class="site-bar">
+        <h1>Sistema de Depósitos</h1>
+        <div class="header-controls">
+            <button class="btn btn-mostrar" onclick="mostrarDepositos()">
+                CARGAR DATOS
+            </button>
+            <button class="btn btn-ocultar" onclick="ocultarDepositos()">
+                LIMPIAR TABLA
+            </button>
         </div>
     </header>
-    <main class="main-content">
-        <div class="container">
-            
-            <div class="table-container">
+    <main>
+        <div class="table-card">
+            <div class="table-wrapper">
                 <table id="tablaDepositos">
                     <thead>
                         <tr>
@@ -38,16 +35,21 @@
                         </tr>
                     </thead>
                     <tbody id="tablaBody">
-                        
+                        <tr id="noData">
+                            <td colspan="8" class="no-data">
+                                No hay datos para mostrar
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
 
-<footer class="footer">
-      <p>Footer</p>
-      <a href="../" class="btn-back">Volver</a>
+    <footer class="site-bar">
+        <div>
+            <a href="../">volver</a>
+        </div>
     </footer>
 
     <script src="script.js">

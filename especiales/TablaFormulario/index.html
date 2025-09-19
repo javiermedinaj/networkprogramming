@@ -8,26 +8,24 @@
     <link rel="stylesheet" href="modal.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <span class="header-title">Sistema de Depósitos</span>
-            <div class="header-controls">
-                <button class="btn btn-mostrar" onclick="mostrarDepositos()">
-                    MOSTRAR DEPÓSITOS
-                </button>
-                <button class="btn btn-ocultar" onclick="ocultarDepositos()">
-                    OCULTAR DEPÓSITOS
-                </button>
-                <button class="btn btn-nuevo" onclick="abrirModal()">
-                    NUEVO DEPÓSITO
-                </button>
-            </div>
+    <header class="site-bar">
+        <h1>Sistema de Depósitos</h1>
+        <div class="header-controls">
+            <button class="btn btn-mostrar" onclick="mostrarDepositos()">
+                CARGAR DATOS
+            </button>
+            <button class="btn btn-ocultar" onclick="ocultarDepositos()">
+                LIMPIAR TABLA
+            </button>
+            <button class="btn btn-nuevo" onclick="abrirModal()">
+                NUEVO DEPÓSITO
+            </button>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="container">          
-            <div class="table-container">
+    <main>
+        <div class="table-card">
+            <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
@@ -43,7 +41,9 @@
                     </thead>
                     <tbody id="tablaBody">
                         <tr id="noData">
-                          
+                            <td colspan="8" class="no-data">
+                                No hay datos para mostrar
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,7 +51,6 @@
         </div>
     </main>
 
-    <!-- Modal Formulario -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-container">
             <div class="modal-header">
@@ -112,12 +111,12 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p>Footer</p>
-        <a href="../" class="btn-back">Volver</a>
+    <footer class="site-bar">
+        <div>
+            <a href="../">volver</a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
-</html>
 </html>

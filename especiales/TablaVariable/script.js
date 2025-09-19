@@ -34,7 +34,7 @@ function mostrarDepositos() {
         
         fila.innerHTML = `
             <td><strong>${deposito.cod_deposito}</strong></td>
-            <td><strong>${deposito.cod_tipo}</strong></td>
+            <td><strong class="tipo-strong">${deposito.cod_tipo}</strong></td>
             <td>${descripcionTipo} - ${deposito.cod_deposito}</td>
             <td>${deposito.direccion}</td>
             <td>${deposito.superficie} m²</td>
@@ -49,11 +49,7 @@ function mostrarDepositos() {
 
 function ocultarDepositos() {
     const tablaBody = document.getElementById('tablaBody');
-    tablaBody.innerHTML = `
-        <tr id="noData">
-            
-        </tr>
-    `;
+    tablaBody.innerHTML = '';
 }
 
 document.addEventListener('DOMContentLoaded', async function() {

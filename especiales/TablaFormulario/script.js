@@ -20,6 +20,8 @@ async function cargarDepositosDesdeJSON() {
         if (!response.ok) throw new Error('Error al cargar depositos.json');
         const data = await response.json();
         depositos = data.depositos;
+        console.log('Depósitos cargados:', depositos.length, 'elementos');
+        console.log('Primer depósito:', depositos[0]);
     } catch (error) {
         console.error('Error cargando depósitos:', error);
         depositos = [];
@@ -27,6 +29,7 @@ async function cargarDepositosDesdeJSON() {
 }
 
 function mostrarDepositos() {
+    console.log('mostrarDepositos llamada, depósitos disponibles:', depositos.length);
     const tbody = document.getElementById('tablaBody');
     tbody.innerHTML = '';
 
@@ -44,7 +47,7 @@ function mostrarDepositos() {
         
         row.innerHTML = `
             <td>${deposito.cod_deposito}</td>
-            <td><span class="tipo-badge tipo-${deposito.cod_tipo}">${tipo ? tipo.descripcion : deposito.cod_tipo}</span></td>
+            <td><strong class="tipo-strong">${tipo ? tipo.descripcion : deposito.cod_tipo}</strong></td>
             <td>${tipo ? tipo.descripcion : ''}</td>
             <td>${deposito.direccion}</td>
             <td>${deposito.superficie}</td>
@@ -59,10 +62,7 @@ function mostrarDepositos() {
 
 function ocultarDepositos() {
     const tbody = document.getElementById('tablaBody');
-    tbody.innerHTML = `
-        <tr id="noData">
-            
-        </tr>`;
+    tbody.innerHTML = '';
 }
 
 function cargarTiposDeposito() {
@@ -76,7 +76,6 @@ function cargarTiposDeposito() {
     });
 }
 
-// Funciones del Modal
 function abrirModal() {
     const modal = document.getElementById('modalOverlay');
     modal.classList.add('active');
@@ -90,12 +89,10 @@ function cerrarModal() {
     document.getElementById('depositoForm').reset();
 }
 
-// Inicializar
 document.addEventListener('DOMContentLoaded', async function() {
     await cargarTiposDesdeJSON();
     await cargarDepositosDesdeJSON();
 
-    // Manejar envío del formulario
     document.getElementById('depositoForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -111,10 +108,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             foto_deposito: formData.get('fotoDeposito').name || null
         };
 
-        // Agregar el nuevo depósito al array
         depositos.push(nuevoDeposito);
         
-        // Cerrar modal y mostrar la tabla actualizada
         cerrarModal();
         mostrarDepositos();
         

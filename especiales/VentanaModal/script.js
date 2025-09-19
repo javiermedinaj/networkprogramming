@@ -1,20 +1,21 @@
-// JSON de tipos de depósito
-const tiposDeposito = [
-    {
-        "cod": "PROD",
-        "descripcion": "Producción"
-    },
-    {
-        "cod": "DIST",
-        "descripcion": "Distribución"
-    },
-    {
-        "cod": "TRAN",
-        "descripcion": "Tránsito"
-    }
-];
+let tiposDeposito = [];
 
-// Funciones del Modal
+async function cargarDatos() {
+    try {
+        const responseTipos = await fetch('../tipos_deposito.json');
+        const dataTipos = await responseTipos.json();
+        tiposDeposito = dataTipos.tiposDeposito;
+        console.log('Tipos de depósito cargados:', tiposDeposito);
+    } catch (error) {
+        console.error('Error cargando tipos de depósito:', error);
+        tiposDeposito = [
+            {"cod": "PROD", "descripcion": "Producción"},
+            {"cod": "DIST", "descripcion": "Distribución"},
+            {"cod": "TRAN", "descripcion": "Tránsito"}
+        ];
+    }
+}
+
 function abrirModal() {
     const modal = document.getElementById('modalOverlay');
     modal.classList.add('active');
@@ -31,7 +32,6 @@ function cerrarModal() {
     establecerFechaActual();
 }
 
-// Cargar opciones del select
 function cargarTiposDeposito() {
     const select = document.getElementById('tipoDeposito');
     tiposDeposito.forEach(tipo => {
@@ -42,20 +42,17 @@ function cargarTiposDeposito() {
     });
 }
 
-// Establecer fecha actual por defecto
 function establecerFechaActual() {
     const fechaInput = document.getElementById('fechaAlta');
     const hoy = new Date().toISOString().split('T')[0];
     fechaInput.value = hoy;
 }
 
-// Inicializar al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    // Cargar tipos de depósito
+document.addEventListener('DOMContentLoaded', async function() {
+    await cargarDatos();
     cargarTiposDeposito();
     establecerFechaActual();
 
-    // Manejar envío del formulario
     document.getElementById('depositoForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -72,8 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             foto_deposito: formData.get('fotoDeposito').name || null
         };
 
-        console.log('Nuevo depósito:', depositoData);
-        // Redirigir a la página de respuesta
         window.location.href = 'respuesta.html';
     });
 });

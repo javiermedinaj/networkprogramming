@@ -1,11 +1,9 @@
 
 let tiposDeposito = [];
 
-// Función para generar el formulario dinámicamente basado en las claves del JSON
 function generarFormulario() {
     const form = document.getElementById('depositoForm');
     
-    // Estructura del JSON para obtener las claves
     const camposJSON = [
         'cod_deposito',
         'cod_tipo', 
@@ -16,7 +14,6 @@ function generarFormulario() {
         'foto_deposito'
     ];
     
-    // Limpiar el formulario actual (excepto el botón de envío)
     const submitContainer = form.querySelector('.submit-container');
     const previewData = document.getElementById('previewData');
     form.innerHTML = '';
@@ -24,25 +21,20 @@ function generarFormulario() {
     let currentRow;
     let fieldCount = 0;
     
-    // Generar campos basándose en las claves del JSON
     camposJSON.forEach(fieldName => {
-        // Crear nueva fila cada 2 campos
         if (fieldCount % 2 === 0) {
             currentRow = document.createElement('div');
             currentRow.className = 'form-row';
             form.appendChild(currentRow);
         }
         
-        // Crear grupo de formulario
         const formGroup = document.createElement('div');
         formGroup.className = 'form-group';
         
-        // Crear label usando directamente la clave del JSON
         const label = document.createElement('label');
         label.htmlFor = fieldName;
         label.textContent = fieldName + ':';
         
-        // Crear input según el tipo de campo
         let input;
         if (fieldName === 'cod_tipo') {
             input = document.createElement('select');
@@ -75,7 +67,6 @@ function generarFormulario() {
         fieldCount++;
     });
     
-    // Agregar el botón de envío y la vista previa
     form.appendChild(submitContainer);
     form.parentNode.appendChild(previewData);
 }
@@ -107,12 +98,9 @@ function cargarTiposDeposito() {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
-    // Generar el formulario dinámicamente
     generarFormulario();
-    // Cargar los tipos de depósito
     await cargarTiposDesdeJSON();
     
-    // Manejar envío del formulario
     document.getElementById('depositoForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -129,7 +117,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         };
 
         console.log('Datos del formulario:', depositoData);
-        // Redirigir a la página de respuesta
         window.location.href = 'respuesta.html';
     });
 });
