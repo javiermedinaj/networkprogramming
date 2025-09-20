@@ -2,121 +2,90 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Depósitos</title>
+    <title>Ejercicio 4: Tabla + Formulario + Modal</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="modal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="site-bar">
-        <h1>Sistema de Depósitos</h1>
-        <div class="header-controls">
-            <button class="btn btn-mostrar" onclick="mostrarDepositos()">
-                CARGAR DATOS
-            </button>
-            <button class="btn btn-ocultar" onclick="ocultarDepositos()">
-                LIMPIAR TABLA
-            </button>
-            <button class="btn btn-nuevo" onclick="abrirModal()">
-                NUEVO DEPÓSITO
-            </button>
-        </div>
-    </header>
+    <div id="contenedor" class="app-container contenedorActivo">
+        <header class="header">
+            <h1>Ejercicio 4: Tabla + Formulario + Modal</h1>
+            <div class="actions">
+                <button id="btnCargar">Cargar</button>
+                <button id="btnVaciar">Vaciar</button>
+                <button id="btnFormulario">Formulario</button>
+            </div>
+        </header>
 
-    <main>
-        <div class="table-card">
-            <div class="table-wrapper">
+        <main class="main-content">
+            <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>Código</th>
                             <th>Tipo</th>
-                            <th>Descripción</th>
-                            <th>Dirección</th>
-                            <th>Superficie (m²)</th>
+                            <th class="hidden-sm">Dirección</th>
+                            <th>Superficie</th>
                             <th>Almacenamiento</th>
-                            <th>Nro Muelles</th>
-                            <th>Foto</th>
+                            <th>Muelles</th>
+                            
+                            <th class="hidden-sm">Foto</th>
                         </tr>
                     </thead>
-                    <tbody id="tablaBody">
-                        <tr id="noData">
-                            <td colspan="8" class="no-data">
-                                No hay datos para mostrar
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody id="tbDatos"></tbody>
                 </table>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-container">
-            <div class="modal-header">
-                <h2 class="modal-title">Nuevo Depósito</h2>
-                <button class="btn-cerrar" onclick="cerrarModal()">×</button>
-            </div>
-
-            <div class="modal-content">
-                <form id="depositoForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="codDeposito">Código de Depósito:</label>
-                            <input type="text" id="codDeposito" name="codDeposito" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tipoDeposito">Tipo de Depósito:</label>
-                            <select id="tipoDeposito" name="tipoDeposito" required>
-                                <option value="">Seleccione un tipo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="direccion">Dirección:</label>
-                            <input type="text" id="direccion" name="direccion" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="superficie">Superficie (m²):</label>
-                            <input type="number" id="superficie" name="superficie" step="0.01" min="0" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="almacenamiento">Capacidad de Almacenamiento:</label>
-                            <input type="number" id="almacenamiento" name="almacenamiento" min="0" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nroMuelles">Número de Muelles:</label>
-                            <input type="number" id="nroMuelles" name="nroMuelles" min="0" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fotoDeposito">Foto del Depósito:</label>
-                            <input type="file" id="fotoDeposito" name="fotoDeposito" accept="image/*">
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-submit">ENVIAR</button>
-                        <button type="button" class="btn btn-cancelar" onclick="cerrarModal()">CANCELAR</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <footer class="footer">
+            <p>PIE DE PÁGINA</p> 
+            <button style="background: #f44336;">
+                <a style="text-decoration: none; color: white;" href="../">Volver atras</a>
+            </button>
+        </footer>
     </div>
 
-    <footer class="site-bar">
-        <div>
-            <a href="../">volver</a>
+    
+    <div id="ventanaModal" class="ventanaModalApagado">
+        <div class="modal-content">
+            <span id="cerrarModal">&times;</span>
+            <form id="formMovimiento" method="GET" action="respuesta.html">
+                <div class="grid">
+                    <div>
+                        <label>Código Depósito</label>
+                        <input name="cod_deposito">
+                    </div>
+                    <div>
+                        <label>Dirección</label>
+                        <input name="direccion">
+                    </div>
+                    <div>
+                        <label>Superficie</label>
+                        <input name="superficie" type="number">
+                    </div>
+                    <div>
+                        <label>Almacenamiento</label>
+                        <input name="almacenamiento" type="number">
+                    </div>
+                    <div>
+                        <label>Nro Muelles</label>
+                        <input name="nro_muelles" type="number">
+                    </div>
+                    <div>
+                        <label>Tipo</label>
+                        <select id="selectTipo" name="cod_tipo"></select>
+                    </div>
+                    <div>
+                        <label>Foto</label>
+                        <input type="file" name="foto_deposito">
+                    </div>
+                </div>
+                    <div class="actions">
+                        <button type="submit">Enviar</button>
+                    </div>
+            </form>
         </div>
-    </footer>
-
-    <script src="script.js"></script>
+    </div>
 </body>
 </html>

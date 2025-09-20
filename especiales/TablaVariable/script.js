@@ -1,57 +1,33 @@
-let tiposDeposito = [];
+let tipos = [];
 let depositos = [];
 
-async function cargarDatos() {
-    try {
-        const responseTipos = await fetch('../tipos_deposito.json');
-        const dataTipos = await responseTipos.json();
-        tiposDeposito = dataTipos.tiposDeposito;
-
-        const responseDepositos = await fetch('../depositos.json');
-        const dataDepositos = await responseDepositos.json();
-        depositos = dataDepositos.depositos;
-
-        console.log('Datos cargados:', { tipos: tiposDeposito, depositos: depositos });
-    } catch (error) {
-        console.error('Error cargando datos:', error);
-    }
-}
-
-function obtenerDescripcionTipo(codTipo) {
-    const tipo = tiposDeposito.find(t => t.cod === codTipo);
-    return tipo ? tipo.descripcion : codTipo;
-}
-
-function mostrarDepositos() {
-    const tablaBody = document.getElementById('tablaBody');
-    const noData = document.getElementById('noData');
-
-    tablaBody.innerHTML = '';
-
+function render() {
+    $("#tbDatos").empty();
     depositos.forEach(deposito => {
-        const fila = document.createElement('tr');
-        const descripcionTipo = obtenerDescripcionTipo(deposito.cod_tipo);
-        
-        fila.innerHTML = `
-            <td><strong>${deposito.cod_deposito}</strong></td>
-            <td><strong class="tipo-strong">${deposito.cod_tipo}</strong></td>
-            <td>${descripcionTipo} - ${deposito.cod_deposito}</td>
-            <td>${deposito.direccion}</td>
-            <td>${deposito.superficie} m²</td>
-            <td>${deposito.almacenamiento} unidades</td>
+        const tipo = tipos.find(t => t.cod === deposito.cod_tipo)?.descripcion || "";
+        $("#tbDatos").append(`<tr>
+            <td>${deposito.cod_deposito}</td>
+            <td><strong>${deposito.cod_tipo}</strong></td>
+            <td class="hidden-sm">${deposito.direccion}</td>
+            <td>${deposito.superficie}</td>
+            <td>${deposito.almacenamiento}</td>
             <td>${deposito.nro_muelles}</td>
-            <td>${deposito.foto_deposito || 'Sin foto'}</td>
-        `;
-        
-        tablaBody.appendChild(fila);
+            <td class="hidden-sm">${deposito.foto_deposito}</td>
+        </tr>`);
     });
 }
 
-function ocultarDepositos() {
-    const tablaBody = document.getElementById('tablaBody');
-    tablaBody.innerHTML = '';
-}
-
-document.addEventListener('DOMContentLoaded', async function() {
-    await cargarDatos();
+$(function() {
+    $.getJSON("../tipos_deposito.json", d => {
+        tipos = d.tiposDeposito;
+    });
+    
+    $("#btnCargar").click(() => {
+        $.getJSON("../depositos.json", d => {
+            depositos = d.depositos;
+            render();
+        });
+    });
+    
+    $("#btnVaciar").click(() => $("#tbDatos").empty());
 });

@@ -2,57 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla de Depósitos</title>
+    <title>Ejercicio 3: Tabla Variable</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="site-bar">
-        <h1>Sistema de Depósitos</h1>
-        <div class="header-controls">
-            <button class="btn btn-mostrar" onclick="mostrarDepositos()">
-                CARGAR DATOS
-            </button>
-            <button class="btn btn-ocultar" onclick="ocultarDepositos()">
-                LIMPIAR TABLA
-            </button>
-        </div>
-    </header>
-    <main>
-        <div class="table-card">
-            <div class="table-wrapper">
+    <div id="contenedor" class="app-container">
+        <header class="header">
+            <h1>Ejercicio 3: Tabla Variable</h1>
+            <div class="actions">
+                <button id="btnCargar">Cargar</button>
+                <button id="btnVaciar">Vaciar</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="table-container">
                 <table id="tablaDepositos">
                     <thead>
                         <tr>
                             <th>Código</th>
                             <th>Tipo</th>
-                            <th>Descripción</th>
-                            <th>Dirección</th>
-                            <th>Superficie (m²)</th>
+                            <th class="hidden-sm">Dirección</th>
+                            <th>Superficie</th>
                             <th>Almacenamiento</th>
-                            <th>Nro Muelles</th>
-                            <th>Foto</th>
+                            <th>Muelles</th>
+                            <th class="hidden-sm">Foto</th>
                         </tr>
                     </thead>
-                    <tbody id="tablaBody">
-                        <tr id="noData">
-                            <td colspan="8" class="no-data">
-                                No hay datos para mostrar
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody id="tbDatos"></tbody>
                 </table>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer class="site-bar">
-        <div>
-            <a href="../">volver</a>
-        </div>
-    </footer>
-
-    <script src="script.js">
-    </script>
+        <footer class="footer">
+            <p>PIE DE PÁGINA</p> 
+            <button style="background: #f44336;">
+                <a style="text-decoration: none; color: white;" href="../">Volver atras</a>
+            </button>
+        </footer>
+    </div>
 </body>
 </html>
