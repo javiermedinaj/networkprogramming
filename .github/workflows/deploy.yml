@@ -1,26 +1,33 @@
-name: Deploy to AWS
+name: Deploy to AWS EC2
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /var/www/html/depositos
-            git pull origin main
-            sudo chown -R ubuntu:www-data .
-            sudo chmod -R 755 .
-            echo "Deploy completado: $(date)"
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          cd /var/www/html/networkprogramming
+          git config --global --add safe.directory /var/www/html/networkprogramming
+          git fetch origin
+          git reset --hard origin/main
+          git clean -fd
+          sudo chown -R github-deploy:www-data .
+          sudo chmod -R 755 .
+          echo "Deploy exitoso: $(date)"
+          echo "Último commit:"
+          git log -1 --oneline
