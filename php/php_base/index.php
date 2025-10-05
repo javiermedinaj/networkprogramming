@@ -4,43 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Demostración PHP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .resultado {
-            background-color: #e3f2fd;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #2196F3;
-        }
-
-        .error {
-            background-color: #ffebee;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #f44336;
-        }
-
-        hr {
-            margin: 20px 0;
-        }
-
-        .volver-atras {
-            background-color: #000000ff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .volver-atras a {
-            color: white;
-            text-decoration: none;
-        }
-    </style>
+   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -59,6 +23,8 @@
     $variableA = "valor1";
     $variableB = 2;
     $variableC = 3;
+
+    echo "<h3>Para comentar una variable en php es \ \$NombreVariable</h3>";
 
     echo "<p>El valor de <strong>\$variableA</strong> es: $variableA</p>";
     echo "<p>El tipo de <strong>\$variableA</strong> es: " . gettype($variableA) . "</p>";

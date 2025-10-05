@@ -17,10 +17,33 @@
       }
       li {
         margin: 10px 0;
+        text-decoration: none;
+      }
+      li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
       }
       footer {
         margin-top: 20px;
         padding-top: 10px;
+      }
+      .repo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #24292e;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+      }
+      .repo a {
+        color: white;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -28,7 +51,7 @@
     <h1>Lista de Ejercicios</h1>
     <nav>
       <ul>
-        <li><a href="html/">HadasdasdasdTML</a></li>
+        <li><a href="html/">HTML</a></li>
         <li><a href="css/">CSS</a></li>
         <li><a href="javascript/">JavaScript</a></li>
         <li><a href="especiales/">Ejercicios Especiales</a></li>
@@ -37,12 +60,16 @@
     </nav>
 <footer>
       <p>Ejercicios hechos por Javier Medina</p>
-      <a
-        href="https://github.com/javiermedinaj/networkprogramming"
-        target="_blank"
-      >
-        link del repositorio con el codigo
-      </a>
+      <button class="repo">
+        <img
+          src="assets/github-mark-white.png"
+          alt="GitHub Logo"
+          width="20"
+          height="20"
+        />
+        <a href="https://github.com/javiermedinaj/networkprogramming" target="_blank">Ver en GitHub</a>
+
+      </button>
     </footer>
   </body>
 </html>

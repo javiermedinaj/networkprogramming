@@ -7,15 +7,44 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
+            margin: 20px;
         }
+
+        h1 {
+            color: #333;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
-         li {
+
+        li {
             margin: 10px 0;
+            padding-top: 10px;
+        }
+
+        .link-li:hover {
+            text-decoration: underline;
+            color: #333;
+        }
+
+        .link-li {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+        }
+.volver-atras {
+            background-color: #000000ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .volver-atras a {
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -42,6 +71,6 @@
         <li><a href="cssParte2/css30LayoutBasico/index.html">css30LayoutBasico</a></li>
         
     </ul>
-    <button style="background-color: brown; padding: 10px; border: none;"><a style="text-decoration: none; color: white;" href="../">Volver Atrás</a></button>
+    <button class="volver-atras"><a href="../">Volver Atrás</a></button>
 </body>
 </html> 

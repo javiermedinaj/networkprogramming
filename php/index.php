@@ -35,30 +35,17 @@
             color: #000;
             font-size: 18px;
         }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #815050ff;
+.volver-atras {
+            background-color: #000000ff;
             color: white;
             border: none;
+            padding: 10px 15px;
+            text-decoration: none;
             border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
         }
-
-        button a {
-            text-decoration: none;
+        .volver-atras a {
             color: white;
-        }
-
-
-        button:hover {
-            background-color: #e0907cff;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -67,12 +54,22 @@
     <h1>PHP</h1>
 
     <ul>
-        <li><a class="link-li" href="php_info/index.html">Php_info- Ejercicio 1</a></li>
+        <li><a class="link-li" href="php_info/info.php">Php_info- Ejercicio 1</a></li>
 
         <li><a class="link-li" href="php_base/index.php">Php_base- Ejercicio 2</a></li>
+
+        <li><a class="link-li" href="php_include/index.php ">Php_Include- Ejercicio 3</a></li>
+
+        <li><a class="link-li" href="php_variables_server/index.php">Variables del servidor- Ejercicio 4</a></li>
+
+        <li><a class="link-li" href="php_variables_objeto/index.php">Variables tipo objeto- Ejercicio 5</a></li>
+
+        <li><a class="link-li" href="php_formularios/index.php">Lectura de formulario- Ejercicio 6</a></li>
     </ul>
     <div>
-        <button><a href="../">Volver Atrás</a></button>
+        <button class="volver-atras">
+            <a class="volver-atras" href="../index.html">Volver atras</a>
+        </button>
     </div>
 
 </body>
