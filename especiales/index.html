@@ -7,29 +7,41 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
+            margin: 20px;
         }
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
+
+        h1 {
+            color: #333;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
-         li {
-        margin: 10px 0;
-      }
+
+        li {
+            margin: 10px 0;
+            padding-top: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+        }
+
+.volver-atras {
+            background-color: #000000ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .volver-atras a {
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -47,8 +59,8 @@
         <li style="text-decoration: none;"><a href="tipos_deposito.json">Tipos de depositos JSON</a></li>
     </ul>
 
-    <button style="background: #f44336;">
-        <a style="text-decoration: none; color: #f0f0f0;" href="../index.html">volver atras</a>
+    <button class="volver-atras">
+        <a class="volver-atras" href="../index.html">volver atras</a>
     </button>
 </body>
 </html> 
