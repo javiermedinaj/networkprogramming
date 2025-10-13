@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario AJAX</title>
+
+</head>
+<body>
+    <h1>Envío de Formulario con AJAX</h1>
+    
+    <form id="formulario" method="post" action="respuesta.php">
+        <label>Código Usuario:</label>
+        <input type="text" name="codUsuario" required>
+        
+        <label>Apellido de Usuario:</label>
+        <input type="text" name="apellidoUsuario" required>
+        
+        <label>Nombre de usuario:</label>
+        <input type="text" name="nombreUsuario" required>
+    </form>
+    
+    <button id="disparo" title="Disparar requerimiento asincrónico AJAX">
+        Disparar requerimiento AJAX
+    </button>
+    
+    <p id="espera" style="display:none;">Esperando 3 segundos de retardo para la respuesta...</p>
+
+    <script>
+        document.getElementById('disparo').addEventListener('click', function() {
+            const objFormulario = document.getElementById('formulario');
+            const objDatosFormulario = new FormData(objFormulario);
+            
+            console.log("valor del input codUsuario: " + objDatosFormulario.get("codUsuario"));
+            
+            document.getElementById('espera').style.display = 'block';
+            
+            const options = {
+                method: 'post',
+                headers: {},
+                body: objDatosFormulario
+            };
+            
+            fetch('./respuesta.php', options)
+                .then(respuesta => {
+                    return respuesta.text();
+                })
+                .then(textoDeRespuesta => {
+                    document.getElementById('espera').style.display = 'none';
+                    alert(textoDeRespuesta);
+                })
+                .catch(error => alert('Error producido: ' + error));
+        });
+    </script>
+</body>
+</html>
