@@ -1,53 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Formulario AJAX</title>
-
+    <meta charset="UTF-8">
+    <title>Form to JSON con API Fetch</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Envío de Formulario con AJAX</h1>
-    
-    <form id="formulario" method="post" action="respuesta.php">
-        <label>Código Usuario:</label>
-        <input type="text" name="codUsuario" required>
+<h1 class="title">Formulario de Registro AJAX vs NORMAL</h1>
+    <form id="formulario" class="formulario" method="POST" action="respuesta.php">
         
-        <label>Apellido de Usuario:</label>
-        <input type="text" name="apellidoUsuario" required>
-        
-        <label>Nombre de usuario:</label>
-        <input type="text" name="nombreUsuario" required>
+        <ul>
+            <li>ID del usuario</li>
+            <input type="text" name="RegistroCodUsuario" placeholder="912">
+            
+            <li>Apellido</li>
+            <input type="text" name="RegistroApellido" placeholder="ortega">
+            
+            <li>Nombre de usuario</li>
+            <input type="text" name="RegistroNombre" placeholder="ariel">
+        </ul>
+
+        <button type="submit" class="envio-tradi">enviar form de manera tradicional</button>
+
     </form>
-    
-    <button id="disparo" title="Disparar requerimiento asincrónico AJAX">
-        Disparar requerimiento AJAX
-    </button>
-    
-    <p id="espera" style="display:none;">Esperando 3 segundos de retardo para la respuesta...</p>
+
+    <button id="disparar-ajax" class="ajax-disparador">Disparar requerimiento asincronico AJAX</button>
+
+    <div class="volver-div">
+        <button class="volver-atras"><a href="../">Volver atras</a></button>
+    </div>
 
     <script>
-        document.getElementById('disparo').addEventListener('click', function() {
-            const objFormulario = document.getElementById('formulario');
-            const objDatosFormulario = new FormData(objFormulario);
+        const botonAjax = document.getElementById('disparar-ajax');
+        const formulario = document.getElementById('formulario');
+        
+        botonAjax.addEventListener('click', () => {
             
-            console.log("valor del input codUsuario: " + objDatosFormulario.get("codUsuario"));
+            const objDatosFormulario = new FormData(formulario);
             
-            document.getElementById('espera').style.display = 'block';
-            
+            console.log("valor del input idUsuario: " + objDatosFormulario.get("RegistroCodUsuario"));
+
             const options = {
-                method: 'post',
-                headers: {},
-                body: objDatosFormulario
+                method: 'POST',
+                body: objDatosFormulario, 
             };
             
-            fetch('./respuesta.php', options)
+            fetch('respuesta.php', options)
                 .then(respuesta => {
-                    return respuesta.text();
+                    return respuesta.text(); 
                 })
-                .then(textoDeRespuesta => {
-                    document.getElementById('espera').style.display = 'none';
-                    alert(textoDeRespuesta);
+                .then(textoJson => {
+                    alert(textoJson);
                 })
-                .catch(error => alert('Error producido: ' + error));
+                .catch(error => {
+                    console.error('Error AJAX:', error);
+                    alert('Error al obtener la respuesta del servidor.');
+                });
         });
     </script>
 </body>

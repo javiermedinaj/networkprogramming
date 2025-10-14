@@ -6,8 +6,8 @@ if (isset($_POST["varDeEntrada"])) {
 
     echo "<h2>Datos Procesados</h2>";
     echo "Valor recibido: " . htmlspecialchars($varDeEntrada) . "<br>";
-    echo "Clave encriptada (SHA256): " . $claveEncriptada . "<p> 256 bits o 32 octetos o 32 pares hexadecimales </p> <br>";
-    echo "Clave encriptada (MD5): " . $claveEncriptadamd5 . "<p> 128 bits o 16 octetos o 16 pares hexadecimales </p> <br>";
+    echo "<h2>Clave encriptada (SHA256):</h2> " . $claveEncriptada . "<p> 256 bits o 32 octetos o 32 pares hexadecimales </p> <br>";
+    echo "<h2>Clave encriptada (MD5):</h2> " . $claveEncriptadamd5 . "<p> 128 bits o 16 octetos o 16 pares hexadecimales </p> <br>";
 
     $objDatos = new stdClass();
     $objDatos->entrada = $varDeEntrada;

@@ -1,16 +1,22 @@
 <?php
-sleep(3);
+sleep(5);
 
-$codUsuario = isset($_POST['codUsuario']) ? $_POST['codUsuario'] : '';
-$apellidoUsuario = isset($_POST['apellidoUsuario']) ? $_POST['apellidoUsuario'] : '';
-$nombreUsuario = isset($_POST['nombreUsuario']) ? $_POST['nombreUsuario'] : '';
+if (empty($_POST)) {
+    header('Content-Type: application/json');
+    echo json_encode([]);
+    exit;
+}
 
-$objUsuario = new stdClass;
-$objUsuario->codUsuario = $codUsuario;
-$objUsuario->apellidoUsuario = $apellidoUsuario;
-$objUsuario->nombreUsuario = $nombreUsuario;
+$data_array = $_POST;
 
-$jsonUsuario = json_encode($objUsuario);
+$objProveedor = new stdclass;
 
-echo $jsonUsuario;
+foreach ($data_array as $key => $value) {
+    $objProveedor->$key = $value;
+}
+
+$jsonProveedor = json_encode($objProveedor);
+
+header('Content-Type: application/json');
+echo $jsonProveedor;
 ?>
