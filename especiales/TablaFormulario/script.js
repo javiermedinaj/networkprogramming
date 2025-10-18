@@ -2,46 +2,53 @@ let tipos = [];
 let depositos = [];
 
 function render() {
-    $("#tbDatos").empty();
+    const tbDatos = document.getElementById("tbDatos");
+    tbDatos.innerHTML = "";
+    
     depositos.forEach(deposito => {
         const tipo = tipos.find(t => t.cod === deposito.cod_tipo)?.descripcion || "";
-        $("#tbDatos").append(`<tr>
+        const row = document.createElement("tr");
+        row.innerHTML = `
             <td>${deposito.cod_deposito}</td>
-             <td>${tipo}</td>
+            <td>${tipo}</td>
             <td class="hidden-sm">${deposito.direccion}</td>
+            <td>${deposito.fecha_habilitacion}</td>
             <td>${deposito.superficie}</td>
             <td>${deposito.almacenamiento}</td>
             <td>${deposito.nro_muelles}</td>
-           
             <td class="hidden-sm">${deposito.foto_deposito}</td>
-        </tr>`);
+        `;
+        tbDatos.appendChild(row);
     });
 }
 
-$(function() {
-    $.getJSON("../tipos_deposito.json", d => {
-        tipos = d.tiposDeposito;
-        $("#selectTipo").empty();
-        tipos.forEach(t => $("#selectTipo").append(`<option value="${t.cod}">${t.descripcion}</option>`));
+document.addEventListener('DOMContentLoaded', function() {
+    tipos = tiposDepositoData.tiposDeposito;
+    const selectTipo = document.getElementById("selectTipo");
+    selectTipo.innerHTML = "";
+    tipos.forEach(t => {
+        const option = document.createElement("option");
+        option.value = t.cod;
+        option.textContent = t.descripcion;
+        selectTipo.appendChild(option);
     });
     
-    $("#btnCargar").click(() => {
-        $.getJSON("../depositos.json", d => {
-            depositos = d.depositos;
-            render();
-        });
+    document.getElementById("btnCargar").addEventListener("click", function() {
+        depositos = depositosData.depositos;
+        render();
     });
     
-    $("#btnVaciar").click(() => $("#tbDatos").empty());
-    
-    $("#btnFormulario").click(() => {
-        $("#contenedor").attr("class", "app-container contenedorPasivo");
-        $("#ventanaModal").attr("class", "ventanaModalPrendido");
+    document.getElementById("btnVaciar").addEventListener("click", function() {
+        document.getElementById("tbDatos").innerHTML = "";
     });
     
-    $("#cerrarModal").click(() => {
-        $("#contenedor").attr("class", "app-container contenedorActivo");
-        $("#ventanaModal").attr("class", "ventanaModalApagado");
+    document.getElementById("btnFormulario").addEventListener("click", function() {
+        document.getElementById("contenedor").className = "app-container contenedorPasivo";
+        document.getElementById("ventanaModal").className = "ventanaModalPrendido";
     });
     
+    document.getElementById("cerrarModal").addEventListener("click", function() {
+        document.getElementById("contenedor").className = "app-container contenedorActivo";
+        document.getElementById("ventanaModal").className = "ventanaModalApagado";
+    });
 });

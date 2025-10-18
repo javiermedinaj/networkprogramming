@@ -1,4 +1,4 @@
-{
+const depositosData = {
   "depositos": [
     {
       "cod_deposito": "DEP001",
@@ -141,4 +141,4 @@
       "foto_deposito": "deposito_014.jpg"
     }
   ]
-}
+};

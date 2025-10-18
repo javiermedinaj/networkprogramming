@@ -1,0 +1,16 @@
+const tiposDepositoData = {
+  "tiposDeposito": [
+    {
+      "cod": "PROD",
+      "descripcion": "Producción"
+    },
+    {
+      "cod": "DIST",
+      "descripcion": "Distribución"
+    },
+    {
+      "cod": "TRAN",
+      "descripcion": "Tránsito"
+    }
+  ]
+};

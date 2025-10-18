@@ -1,0 +1,32 @@
+# Archivos sensibles
+.env
+.env.*
+!.env.example
+
+# Scripts de base de datos
+schema.sql
+*.sql
+db-scripts/
+
+# Configuraciones locales
+config.local.php
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+
+# Backups
+*.bak
+*.backup
+backup/
+
+# Uploads (si manejás archivos sensibles)
+uploads/*
+!uploads/.gitkeep
