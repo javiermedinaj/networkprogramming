@@ -16,6 +16,10 @@
         <li><a class="link-li" href="php1/index.php"> Semana1 </a> </li>
 
         <li><a class="link-li" href="php2/index.php"> Semana 2 <a /> </li>
+
+        <li> <a class="link-li" href="php3/index.php"> Semana 3 <a /> </li>
+
+        <li> <a class="link-li" href="php4/index.html"> Semana 4 <a /> </li>
     </ul>
     <div>
         <button class="volver-atras">
