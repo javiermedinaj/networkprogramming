@@ -6,8 +6,7 @@ require_once 'datosConexionBase.php';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
 $resultado = "";
-
-// Simular demora (como pide el profesor)
+//simulacion de demora :p
 sleep(1);
 
 try {
