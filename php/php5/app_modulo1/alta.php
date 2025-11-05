@@ -115,7 +115,6 @@ try {
             $stmtUpdate = $dbh->prepare($sqlUpdate);
             $resultado .= "Preparación exitosa (documento)<br>";
             
-            // Para LOBs es más confiable usar bindValue cuando ya tenemos el contenido en memoria
             $stmtUpdate->bindValue(':documento', $contenidoBinario, PDO::PARAM_LOB);
             $stmtUpdate->bindValue(':cod_deposito', $cod_deposito, PDO::PARAM_STR);
             

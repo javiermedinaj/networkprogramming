@@ -1,9 +1,5 @@
 <?php
-/**
- * Archivo de protección de sesiones
- * Punto 6: Incluir al inicio de cada script que requiera autenticación
- * Todos los módulos menos formularioDeLogin.html llevan en su primera línea este control
- */
+
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

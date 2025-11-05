@@ -108,7 +108,7 @@ try {
             $stmtUpdate = $dbh->prepare($sqlUpdate);
             $resultado .= "Preparación exitosa (documento)<br>";
             
-        // Usar bindValue para LOB cuando ya tenemos el contenido en memoria
+        // Usar bindValue para LOB 
         $stmtUpdate->bindValue(':documento', $contenidoBinario, PDO::PARAM_LOB);
         // El WHERE debe usar la clave primaria original recibida por el formulario
         $stmtUpdate->bindValue(':cod_deposito', $cod_deposito_original, PDO::PARAM_STR);

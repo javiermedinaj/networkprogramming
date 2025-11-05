@@ -14,25 +14,25 @@ include '../manejoSesion.inc.php';
         <header class="header">
             <div class="header-top">
                 <h1>Gestión de Depósitos - ABM</h1>
-                <div class="actions">
-                    <button type="button" id="btnAlta">Nuevo</button>
-                    <button type="button" id="btnLimpiarFiltros">Limpiar Filtros</button>
-                    <button type="button" id="btnVaciar">Vaciar Datos</button>
-                    <button type="button" id="btnCargar">Cargar Datos</button>
-                    <button type="button" id="btnCerrarSesion" style="background-color: #dc3545;">Cerrar Sesión</button>
+                <div class="header-actions">
+                    <div class="orden-section">
+                        <label for="selectOrden">Orden:</label>
+                        <input type="text" id="selectOrden" placeholder="ID_Contrato" value="cod_deposito">
+                    </div>
+                    <div class="actions">
+                        <button type="button" id="btnCargar">Cargar datos</button>
+                        <button type="button" id="btnVaciar">Vaciar datos</button>
+                        <button type="button" id="btnLimpiarFiltros">Limpiar filtros</button>
+                        <button type="button" id="btnAlta">Alta registro</button>
+                        <button type="button" id="btnCerrarSesion" style="background-color: #dc3545;">Cerrar Sesión</button>
+                    </div>
                 </div>
             </div>
             
             <div class="filtros-grid">
-                <input data-col="cod_deposito" type="text" id="filtro_cod_deposito" placeholder="Código">
                 <select id="filtro_cod_tipo">
-                    <option value="">-- Tipo --</option>
+                    <option value="">Todas</option>
                 </select>
-              <input data-col="direccion" type="text" id="filtro_direccion" placeholder="Dirección">
-                <input data-col="superficie" type="number" id="filtro_superficie" placeholder="Superficie">
-                <input data-col="fecha_habilitacion" type="text" id="filtro_fecha_habilitacion" placeholder="Fecha">
-                <input data-col="almacenamiento" type="number" id="filtro_almacenamiento" placeholder="Almacenamiento">
-                <input data-col="nro_muelles" type="number" id="filtro_nro_muelles" placeholder="Nº Muelles">
             </div>
             
             <div style="text-align: center; margin-top: 12px; color: #fff; font-size: 1.1em;">

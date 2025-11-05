@@ -36,6 +36,36 @@ body {
   flex: 1;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.orden-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.orden-section label {
+  color: #fff;
+  font-size: 0.9em;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.orden-section input {
+  width: 150px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #222;
+  font-size: 0.9em;
+}
+
 .actions {
   display: flex;
   justify-content: center;
@@ -144,8 +174,9 @@ input, select {
 }
 
 .filtros-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  display: flex;
+  justify-content: left;
+  align-items: left;
   gap: 8px;
   margin-top: 16px;
   padding: 0 10px;
@@ -164,10 +195,10 @@ input, select {
   font-weight: normal;
 }
 
-.filtros-grid input,
 .filtros-grid select {
-  width: 100%;
-  padding: 8px 6px;
+  width: auto;
+  min-width: 200px;
+  padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background: #fff;
@@ -286,7 +317,8 @@ input, select {
 @media (max-width: 768px) {
   .header {
     padding: 12px;
-    background: #131314;
+    background: #0d0d0d;
+    
   }
   
   .header-top {
@@ -299,8 +331,31 @@ input, select {
   .header h1 {
     font-size: 1.3em;
     margin: 0;
-    color: #fff9f9;
+    color: #fff;
     width: 100%;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .orden-section {
+    width: 100%;
+    align-items: center;
+  }
+  
+  .orden-section label {
+    color: #fff;
+    font-size: 0.9em;
+  }
+  
+  .orden-section input {
+    flex: 1;
+    width: auto;
+    min-width: 150px;
   }
   
   .actions {
@@ -318,27 +373,24 @@ input, select {
     font-size: 0.8em;
     margin: 2px;
     border-radius: 4px;
-    background: #2a7c47;
-    color: #ebe6e6;
+    background: #105a13;
+    color: #fff;
     border: 1px solid #ccc;
   }
-  
   .actions button:hover {
-    background: #0f3e0c;
+    background: #105a13;
+    color: #fff;
+    border: 1px solid #ccc;
   }
-  
-  #btnCerrarSesion {
-    background: #dc3545 !important;
-    color: #fff !important;
-  }
-  
-  #btnCerrarSesion:hover {
-    background: #c82333 !important;
+  .actions button:hover {
+    background: #105a13;
+    color: #fff;
+    border: 1px solid #ccc;
   }
   
   /* Ajustar texto de total registros en mobile */
   .header div[style*="text-align: center"] {
-    color: #d4d2d2 !important;
+    color: #fff !important;
   }
   
   th, td {
@@ -351,18 +403,15 @@ input, select {
   }
   
   .filtros-grid {
-    grid-template-columns: 1fr;
-    gap: 6px;
+    justify-content: left;
+    gap: 8px;
     padding: 0;
     margin-top: 16px;
   }
   
-  .filtro-label {
-    display: block;
-  }
-  
-  .filtros-grid input,
   .filtros-grid select {
+    width: 100%;
+    max-width: 300px;
     padding: 12px 10px;
     font-size: 1em;
     border-radius: 6px;
@@ -415,12 +464,10 @@ input, select {
     border-radius: 4px;
   }
   
-  .filtros-grid {
-    gap: 10px;
-  }
-  
-  .filtros-grid input,
   .filtros-grid select {
+    justify-content: left;
+    width: 100%;
+    max-width: 250px;
     padding: 12px 10px;
   }
 }

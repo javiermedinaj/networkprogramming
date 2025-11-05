@@ -51,7 +51,7 @@ if (!$usuario) {
 
 // PUNTO 3: Autenticación exitosa - Crear nueva sesión
 // session_start() ya se ejecutó al inicio del script
-// Ahora creamos el identificador de sesión
+// identificador de sesión
 
 // Asignar nuevo identificativo para la nueva sesión
 $_SESSION['usuario_id'] = $usuario['id_usuario'];

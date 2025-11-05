@@ -2,13 +2,6 @@
 // Protección de sesión
 include('../manejoSesion.inc.php');
 
-header("Content-Type: application/json; charset=utf-8");
-header("Access-Control-Allow-Origin: *");
-
-// Habilitar errores para debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 0); // No mostrar en pantalla, solo en JSON
-
 include '../datos_conexion.php';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";

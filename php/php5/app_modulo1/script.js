@@ -9,7 +9,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function configurarEventos() {
-    // Referencias opcionales (el select puede haber sido eliminado en la plantilla)
     const selectOrden = document.getElementById('selectOrden');
     const btnToggle = document.getElementById('btnToggleDireccion');
 
@@ -19,12 +18,10 @@ function configurarEventos() {
     document.getElementById('btnAlta').addEventListener('click', abrirFormularioAlta);
     document.getElementById('btnCerrarSesion').addEventListener('click', cerrarSesion);
     
-    // Ordenamiento por clic en encabezados
     document.querySelectorAll('th[data-col]').forEach(th => {
         th.addEventListener('click', () => {
             const campo = th.dataset.col;
             
-            // Si es el mismo campo, cambiar dirección; si no, ASC
             if (ordenActual.campo === campo) {
                 ordenActual.direccion = ordenActual.direccion === 'ASC' ? 'DESC' : 'ASC';
             } else {
@@ -32,29 +29,27 @@ function configurarEventos() {
                 ordenActual.direccion = 'ASC';
             }
             
-            // Actualizar select de orden (si existe)
             if (selectOrden) selectOrden.value = campo;
             
-            // Actualizar indicadores visuales
             actualizarIndicadoresOrden();
             
             cargarDepositos();
         });
         
-        // Agregar cursor pointer
         th.style.cursor = 'pointer';
     });
     
     if (selectOrden) {
-        selectOrden.addEventListener('change', (e) => {
-            ordenActual.campo = e.target.value;
-            // conservar la dirección actual
+        selectOrden.addEventListener('input', (e) => {
+            ordenActual.campo = e.target.value || 'cod_deposito';
             actualizarIndicadoresOrden();
-            cargarDepositos();
+        });
+        selectOrden.addEventListener('change', (e) => {
+            ordenActual.campo = e.target.value || 'cod_deposito';
+            actualizarIndicadoresOrden();
         });
     }
 
-    // Botón para alternar dirección (si existe)
     if (btnToggle) {
         btnToggle.textContent = ordenActual.direccion === 'ASC' ? '▲' : '▼';
         btnToggle.addEventListener('click', () => {
@@ -93,7 +88,7 @@ function cargarTiposDeposito() {
 
 function llenarSelectTipos() {
     const selectFiltro = document.getElementById('filtro_cod_tipo');
-    selectFiltro.innerHTML = '<option value="">-- Tipo --</option>';
+    selectFiltro.innerHTML = '<option value="">Todas</option>';
     tipos.forEach(tipo => {
         const option = document.createElement('option');
         option.value = tipo.cod;
@@ -112,16 +107,15 @@ function llenarSelectTipos() {
 }
 
 function cargarDepositos() {
+    const selectOrden = document.getElementById('selectOrden');
+    if (selectOrden && selectOrden.value) {
+        ordenActual.campo = selectOrden.value;
+    }
+    
     const formData = new URLSearchParams();
     formData.append('orden', ordenActual.campo);
     formData.append('direccion', ordenActual.direccion);
-    formData.append('filtro_cod_deposito', document.getElementById('filtro_cod_deposito').value);
     formData.append('filtro_cod_tipo', document.getElementById('filtro_cod_tipo').value);
-    formData.append('filtro_direccion', document.getElementById('filtro_direccion').value);
-    formData.append('filtro_superficie', document.getElementById('filtro_superficie').value);
-    formData.append('filtro_fecha_habilitacion', document.getElementById('filtro_fecha_habilitacion').value);
-    formData.append('filtro_almacenamiento', document.getElementById('filtro_almacenamiento').value);
-    formData.append('filtro_nro_muelles', document.getElementById('filtro_nro_muelles').value);
     
     alert('Variables que se envían al servidor:\n' + formData.toString());
     
@@ -146,14 +140,12 @@ function cargarDepositos() {
 }
 
 function actualizarIndicadoresOrden() {
-    // Limpiar todos los indicadores
     document.querySelectorAll('th[data-col]').forEach(th => {
         th.classList.remove('orden-asc', 'orden-desc');
         const span = th.querySelector('.indicador-orden');
         if (span) span.remove();
     });
     
-    // Agregar indicador al campo actual
     const thActivo = document.querySelector(`th[data-col="${ordenActual.campo}"]`);
     if (thActivo) {
         const indicador = document.createElement('span');
@@ -201,26 +193,18 @@ function vaciarTabla() {
 }
 
 function limpiarFiltros() {
-    document.getElementById('filtro_cod_deposito').value = '';
     document.getElementById('filtro_cod_tipo').value = '';
-    document.getElementById('filtro_direccion').value = '';
-    document.getElementById('filtro_superficie').value = '';
-    document.getElementById('filtro_fecha_habilitacion').value = '';
-    document.getElementById('filtro_almacenamiento').value = '';
-    document.getElementById('filtro_nro_muelles').value = '';
 }
 
 function verPDF(codDeposito) {
     fetch(`traeDoc.php?cod_deposito=${encodeURIComponent(codDeposito)}`)
         .then(response => {
-            // Si no OK, intentar leer texto de error y mostrarlo
             if (!response.ok) {
                 return response.text().then(txt => { throw new Error(txt || 'Error al recuperar documento'); });
             }
 
             const contentType = response.headers.get('Content-Type') || '';
             if (!contentType.includes('application/pdf')) {
-                // Si el servidor devolvió HTML o texto, leerlo y mostrarlo como error
                 return response.text().then(txt => { throw new Error(txt || 'Respuesta inesperada del servidor'); });
             }
 
@@ -229,10 +213,8 @@ function verPDF(codDeposito) {
         .then(blob => {
             alert('PDF recibido del servidor, abriendo ventana modal...');
 
-            // Crear URL del blob
             const url = URL.createObjectURL(blob);
 
-            // Abrir en ventana modal con iframe
             const contenido = document.getElementById('contenidoRespuesta');
 
             contenido.innerHTML = `
@@ -409,6 +391,3 @@ function cerrarSesion() {
         window.location.href = '../logout.php';
     }
 }
-
-//eventos prueba
-// (Se eliminó la definición duplicada de configurarEventos para evitar conflictos)
