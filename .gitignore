@@ -19,8 +19,8 @@ Thumbs.db
 *~
 
 # Logs
-*.log
-error_log
+# *.log
+# error_log
 
 # Backups
 *.bak
@@ -30,3 +30,5 @@ backup/
 # Uploads (si manejás archivos sensibles)
 uploads/*
 !uploads/.gitkeep
+
+docs

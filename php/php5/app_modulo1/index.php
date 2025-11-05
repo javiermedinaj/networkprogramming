@@ -1,0 +1,121 @@
+<?php
+include '../manejoSesion.inc.php';
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM Depósitos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="contenedor" class="app-container contenedorActivo">
+        <header class="header">
+            <div class="header-top">
+                <h1>Gestión de Depósitos - ABM</h1>
+                <div class="actions">
+                    <button type="button" id="btnAlta">Nuevo</button>
+                    <button type="button" id="btnLimpiarFiltros">Limpiar Filtros</button>
+                    <button type="button" id="btnVaciar">Vaciar Datos</button>
+                    <button type="button" id="btnCargar">Cargar Datos</button>
+                    <button type="button" id="btnCerrarSesion" style="background-color: #dc3545;">Cerrar Sesión</button>
+                </div>
+            </div>
+            
+            <div class="filtros-grid">
+                <input data-col="cod_deposito" type="text" id="filtro_cod_deposito" placeholder="Código">
+                <select id="filtro_cod_tipo">
+                    <option value="">-- Tipo --</option>
+                </select>
+              <input data-col="direccion" type="text" id="filtro_direccion" placeholder="Dirección">
+                <input data-col="superficie" type="number" id="filtro_superficie" placeholder="Superficie">
+                <input data-col="fecha_habilitacion" type="text" id="filtro_fecha_habilitacion" placeholder="Fecha">
+                <input data-col="almacenamiento" type="number" id="filtro_almacenamiento" placeholder="Almacenamiento">
+                <input data-col="nro_muelles" type="number" id="filtro_nro_muelles" placeholder="Nº Muelles">
+            </div>
+            
+            <div style="text-align: center; margin-top: 12px; color: #fff; font-size: 1.1em;">
+                <strong>Total Registros: <span id="totalRegistros">0</span></strong>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="table-container">
+                <table id="tablaDepositos">
+                    <thead>
+                        <tr>
+                            <th data-col="cod_deposito">Código</th>
+                            <th data-col="cod_tipo">Tipo</th>
+                            <th data-col="direccion">Dirección</th>
+                            <th data-col="superficie">Superficie</th>
+                            <th data-col="fecha_habilitacion" class="hidden-sm">Fecha Habilitación</th>
+                            <th data-col="almacenamiento" class="hidden-sm">Almacenamiento</th>
+                            <th data-col="nro_muelles">Nº Muelles</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyDepositos">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p> 2025 Sistema de Depósitos</p>
+        </footer>
+    </div>
+
+    <div id="ventanaModal" class="ventanaModalApagado">
+        <div class="modal-content">
+            <button id="cerrarModal">✖</button>
+            <h2 id="tituloModal">Formulario</h2>
+            <form id="formularioABM">
+                <input type="hidden" id="tipoOperacion" name="tipoOperacion" value="">
+                <input type="hidden" id="cod_deposito_hidden" name="cod_deposito_original" value="">
+                
+                <label for="cod_deposito">Código Depósito:</label>
+                <input type="text" id="cod_deposito" name="cod_deposito" required>
+                
+                <label for="cod_tipo">Tipo:</label>
+                <select id="cod_tipo" name="cod_tipo" required>
+                    <option value="">-- Seleccione --</option>
+                </select>
+                
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+                
+                <label for="superficie">Superficie (m²):</label>
+                <input type="number" id="superficie" name="superficie" step="0.01" required>
+                
+                <label for="fecha_habilitacion">Fecha Habilitación:</label>
+                <input type="date" id="fecha_habilitacion" name="fecha_habilitacion" required>
+                
+                <label for="almacenamiento">Capacidad Almacenamiento (m³):</label>
+                <input type="number" id="almacenamiento" name="almacenamiento" step="0.01" required>
+                
+                <label for="nro_muelles">Número de Muelles:</label>
+                <input type="number" id="nro_muelles" name="nro_muelles" required>
+                
+                <label for="archivoDocumento">Documento PDF (opcional):</label>
+                <input type="file" id="archivoDocumento" name="archivoDocumento" accept=".pdf,.PDF">
+                <small style="color: #666;">Archivo actual: <strong id="nombreArchivoActual">Ninguno</strong></small>
+                
+                <br><br>
+                <button type="submit" id="btnEnviarForm" disabled>Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="ventanaModalRespuesta" class="ventanaModalApagado">
+        <div class="modal-content">
+            <button id="cerrarModalRespuesta">✖</button>
+            <h2>Respuesta del Servidor</h2>
+            <div id="contenidoRespuesta" style="white-space: pre-line;">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
