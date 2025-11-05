@@ -193,7 +193,14 @@ function vaciarTabla() {
 }
 
 function limpiarFiltros() {
+    // Limpiar el select de tipo
     document.getElementById('filtro_cod_tipo').value = '';
+    
+    // Limpiar el campo de orden (opcional, si quieres que también se resetee)
+    // document.getElementById('selectOrden').value = 'cod_deposito';
+    
+    // Recargar los datos después de limpiar
+    cargarDepositos();
 }
 
 function verPDF(codDeposito) {
