@@ -194,10 +194,29 @@ function vaciarTabla() {
 
 function limpiarFiltros() {
     // Limpiar el select de tipo
-    document.getElementById('filtro_cod_tipo').value = '';
+    const selectFiltro = document.getElementById('filtro_cod_tipo');
     
-    // Limpiar el campo de orden (opcional, si quieres que también se resetee)
-    // document.getElementById('selectOrden').value = 'cod_deposito';
+    // Buscar y seleccionar la opción con value=""
+    const optionTodas = selectFiltro.querySelector('option[value=""]');
+    if (optionTodas) {
+        optionTodas.selected = true;
+        selectFiltro.value = '';
+    } else {
+        // Si no existe, seleccionar la primera opción
+        selectFiltro.selectedIndex = 0;
+    }
+    
+    // Disparar evento change para asegurar que el navegador reconozca el cambio
+    selectFiltro.dispatchEvent(new Event('change', { bubbles: true }));
+    
+    // Resetear el campo de orden al valor inicial (como cuando se carga la página)
+    const selectOrden = document.getElementById('selectOrden');
+    if (selectOrden) {
+        selectOrden.value = 'cod_deposito';
+        ordenActual.campo = 'cod_deposito';
+        ordenActual.direccion = 'ASC';
+        actualizarIndicadoresOrden();
+    }
     
     // Recargar los datos después de limpiar
     cargarDepositos();

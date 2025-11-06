@@ -17,7 +17,7 @@ include '../manejoSesion.inc.php';
                 <div class="header-actions">
                     <div class="orden-section">
                         <label for="selectOrden">Orden:</label>
-                        <input type="text" id="selectOrden" placeholder="ID_Contrato" value="cod_deposito">
+                        <input type="text" id="selectOrden" value="cod_deposito">
                     </div>
                     <div class="actions">
                         <button type="button" id="btnCargar">Cargar datos</button>
